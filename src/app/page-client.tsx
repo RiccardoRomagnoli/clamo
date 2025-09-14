@@ -69,7 +69,7 @@ import { cn } from '~/utils/tailwind'
 const demoChat = [
   {
     role: 'assistant', 
-    content: "Hello! I'm here to help you with your case at the Justice of the Peace court. Let's start: what type of dispute are you dealing with?",
+    content: "Hello! I'm here to help you with your case at the Giudice di Page court. Let's start: what type of dispute are you dealing with?",
     delay: 0 
   },
   { 
@@ -111,8 +111,8 @@ const generatedTasks = [
   },
   {
     id: '2',
-    title: 'File at Justice of the Peace',
-    description: 'Go to the Milan Justice of the Peace court (Via Francesco Sforza 23). Bring: appeal in 3 copies, original ticket, €43 stamp duty, photos and witness statement.',
+    title: 'File at Giudice di Page',
+    description: 'Go to the Milan Giudice di Page court (Via Francesco Sforza 23). Bring: appeal in 3 copies, original ticket, €43 stamp duty, photos and witness statement.',
     strategy: 'filing',
     icon: MapPin,
     color: 'purple',
@@ -688,7 +688,7 @@ const TaskGenerationAnimation = ({ sectionRef }: { sectionRef: React.RefObject<H
         phase="PHASE 2"
         icon={<Brain className="h-4 w-4 mr-2" />}
         title="We Generate Your Case"
-        description="Our system automatically creates all necessary documents and tasks to complete for your Justice of the Peace appeal."
+        description="Our system automatically creates all necessary documents and tasks to complete for your Giudice di Page appeal."
         onRestart={restart}
         nextPhaseId="task-execution"
         isAnimating={stage !== 'complete' || visibleTasks.length < generatedTasks.length}
@@ -1803,13 +1803,13 @@ export default function ClamoLandingClient() {
           <div className="mx-auto max-w-3xl space-y-4">
             <details className="group rounded-lg border bg-white p-6 hover:shadow-md transition-shadow">
               <summary className="flex cursor-pointer justify-between font-semibold">
-                <span>How does Clamo work for Justice of the Peace appeals?</span>
+                <span>How does Clamo work for Giudice di Page appeals?</span>
                 <ChevronRight className="transition-transform group-open:rotate-90" />
               </summary>
               <p className="mt-4 text-gray-700">
-                Clamo is specifically designed for Justice of the Peace appeals. We don't provide legal advice, but 
+                Clamo is specifically designed for Giudice di Page appeals. We don't provide legal advice, but 
                 guide you through <strong>standardized procedures</strong> with pre-filled documents, clear deadlines 
-                and step-by-step instructions. The system knows all Italian Justice of the Peace courts and tells you exactly 
+                and step-by-step instructions. The system knows all Italian Giudice di Page courts and tells you exactly 
                 where to go and what to do.
               </p>
             </details>

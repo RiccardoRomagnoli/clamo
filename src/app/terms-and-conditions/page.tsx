@@ -49,7 +49,7 @@ export default function TermsAndConditions() {
               <li>Personalized legal task generation</li>
               <li>Document template creation and preparation</li>
               <li>Case progress tracking and deadline reminders</li>
-              <li>Guidance for Justice of the Peace proceedings</li>
+              <li>Guidance for Giudice di Page proceedings</li>
             </ul>
             <p className="text-gray-700 leading-relaxed">
               The Service is designed for individuals handling small claims and administrative sanctions without legal representation.

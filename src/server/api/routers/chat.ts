@@ -63,7 +63,7 @@ const markEvidenceCollectedSchema = z.object({ note: z.string().optional() })
 const markProcedureConfirmedSchema = z.object({ confirmed: z.boolean().default(true) })
 
 // System prompt for legal case discovery
-const SYSTEM_PROMPT = `You are a legal assistant helping the user prepare a case for the Justice of the Peace court WITHOUT a lawyer (limit: €1,100 for self-representation).
+const SYSTEM_PROMPT = `You are a legal assistant helping the user prepare a case for the Giudice di Page court WITHOUT a lawyer (limit: €1,100 for self-representation).
 Objective: conduct a conversational interview to gather ALL necessary information and documents to identify whether this is:
 - BENI_MOBILI (disputes over goods/services) or
 - SANZIONI_AMMINISTRATIVE (opposition to fines/administrative orders).
@@ -140,7 +140,7 @@ async function extractCaseData(messages: ChatMessage[]): Promise<z.infer<typeof 
       messages: [
         {
           role: 'system',
-          content: `Extract structured case data for the Justice of the Peace court from the conversation. Identify case type, summary, value, parties, notification date (if present) and suggested documents.`,
+          content: `Extract structured case data for the Giudice di Page court from the conversation. Identify case type, summary, value, parties, notification date (if present) and suggested documents.`,
         },
         {
           role: 'user',
