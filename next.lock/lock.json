@@ -1,0 +1,5 @@
+{
+  "https://cdn.skypack.dev/-/@mozilla/readability@v0.6.0-hL7svWvzCMhcPyNf1MHO/dist=es2019,mode=imports/optimized/@mozilla/readability.js": { "integrity": "sha512-ulvAK12rLYCFq3sh0M5oYLpmzUyRKtFjJUt7uLrtcNJLLgGy/kvRimpvixSQskCjnof2JIzguv7CYaoOZ4bI9A==", "contentType": "application/javascript; charset=utf-8" },
+  "https://cdn.skypack.dev/@mozilla/readability": { "integrity": "sha512-+ZKxLPt9xXsvdkruwMyjCGDmWSW99y+mUaYskAs06Vbg6/UxaixWytqyvEkoIPIqetG+KzgWA8reFB4ksx8SXA==", "contentType": "application/javascript; charset=utf-8" },
+  "version": 1
+}

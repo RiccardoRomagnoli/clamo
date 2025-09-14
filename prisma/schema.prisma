@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+/// Example
+model User {
+  id                 String   @id @default(uuid()) @db.Uuid
+  email              String   @unique
+  stripe_customer_id String?
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  // Relations
+  cases Case[]
+  chats Chat[]
+}
+
+model Chat {
+  id                 String   @id @default(uuid()) @db.Uuid
+  user_id            String   @db.Uuid
+  case_id            String?  @db.Uuid
+  initial_message    String?
+  chat_history       Json     @default("[]") // Array of messages
+  progress           Json?    @default("{}") // Progress tracking object
+  completed          Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [user_id], references: [id])
+  case Case? @relation(fields: [case_id], references: [id])
+}
+
+enum CaseType {
+  BENI_MOBILI
+  SANZIONI_AMMINISTRATIVE
+}
+
+model Case {
+  id                 String   @id @default(uuid()) @db.Uuid
+  user_id            String   @db.Uuid
+  type               CaseType
+  title              String?
+  summary            String?
+  data               Json?    @default("{}") // Collected structured info from chat (facts, parties, values, dates)
+  stage              String   @default("discovery") // discovery, preparation, filing, hearing, closed
+  completed          Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [user_id], references: [id])
+  chats Chat[]
+  tasks Task[]
+  documents CaseDocument[]
+}
+
+model Task {
+  id                 String   @id @default(uuid()) @db.Uuid
+  case_id            String   @db.Uuid
+  title              String
+  description        String
+  status             String   @default("pending") // pending, active, completed, not_relevant, generating, error
+  order_index        Int      @default(0) // Sequential order of tasks
+  notes              String?
+  got_results        Boolean  @default(false)
+  due_date           DateTime?
+  metadata           Json?    @default("{}") // checklist, references, costs, payment_info, addresses
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  // Relations
+  case Case @relation(fields: [case_id], references: [id])
+}
+
+model CaseDocument {
+  id           String   @id @default(uuid()) @db.Uuid
+  case_id      String   @db.Uuid
+  file_name    String
+  content_type String
+  size_bytes   Int
+  s3_key       String
+  url          String?
+  category     String? // e.g. contratto, ricevuta, verbale, perizia, foto, comunicazioni
+  metadata     Json?    @default("{}")
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+
+  // Relations
+  case Case  @relation(fields: [case_id], references: [id])
+}
+
