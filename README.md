@@ -57,7 +57,7 @@ S3 (uploads)  •  AI (OpenAI/Perplexity)  •  Supabase (Auth)
 4. Court finder: LLM with `LISTA_GIUDICI` to identify competent office (local fallback)
 5. Documents: S3 presigned URL → `attachDocument` saves metadata in Prisma
 
-## Tech Stack
+## Tech Stack 
 
 - Next.js 15, React 19
 - TypeScript
